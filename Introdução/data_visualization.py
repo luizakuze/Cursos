@@ -1,4 +1,3 @@
-
 """# Introdução a visualização de dados"""
 
 notas.describe()
@@ -56,4 +55,26 @@ df.plot(x='coluna_x', y='coluna_y', kind='line')
 plt.title('Gráfico de Linhas')
 plt.xlabel('Eixo X')
 plt.ylabel('Eixo Y')
+plt.show()
+
+# Notas arredondadas em 1 casa decimal
+arredondadas = notas["nota"].round(1)
+
+# Contagem das notas
+contagem_notas = arredondadas.value_counts()
+
+# Plotando o gráfico de barras
+sns.barplot(x=contagem_notas.index, y=contagem_notas.values, palette="Blues")
+plt.title("Distribuição das Notas")
+plt.xlabel("Notas")
+plt.ylabel("Contagem")
+plt.show()
+
+# Ordenando as notas
+contagem_notas = contagem_notas.sort_index()
+
+sns.barplot(x=contagem_notas.index, y=contagem_notas.values, palette="Blues")
+plt.title("Distribuição das Notas")
+plt.xlabel("Notas")
+plt.ylabel("Contagem")
 plt.show()
