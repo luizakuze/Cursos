@@ -1,4 +1,4 @@
-/* Alguns amigos est˜ao em uma lanchonete. Sobre a mesa há duas travessas. Em uma delas há 3
+/* Alguns amigos estão em uma lanchonete. Sobre a mesa há duas travessas. Em uma delas há 3
 pastéis e 5 coxinhas. Na outra hé 2 coxinhas e 4 pastéis. Se ao acaso alguém escolher uma destas
 travessas e também ao acaso pegar um dos salgados, qual a probabilidade de se ter pegado um pastel? */
 
