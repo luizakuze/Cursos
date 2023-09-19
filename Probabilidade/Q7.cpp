@@ -7,27 +7,27 @@ travessas e também ao acaso pegar um dos salgados, qual a probabilidade de se t
 #include <ctime>
 
 int main() {
-    srand(time(NULL));  // Inicializa o gerador de números aleatórios com o tempo atual
+    srand(time(NULL));  // inicializa o gerador de números aleatórios com o tempo atual
 
-    // Probabilidade de pegar um pastel em cada travessa
+    // probabilidade de pegar um pastel em cada travessa
     float prob_travessa1 = 3.0 / (3 + 5);
     float prob_travessa2 = 4.0 / (4 + 2);
 
-    // Número total de simulações
+    // número total de simulações
     unsigned n = 1000000;
 
-    // Variáveis para contar o número de vezes que um pastel foi pego
+    // variáveis para contar o número de vezes que um pastel foi pego
     int pastel_contador = 0;
 
-    // Loop para realizar as simulações
-    for (unsigned i = 0; i < n; ++i) {
-        // Escolha aleatória da travessa (0 para travessa 1, 1 para travessa 2)
+    // loop para realizar as simulações
+    for (unsigned i = 0; i < n; i++) {
+        // escolha aleatória da travessa (0 para travessa 1, 1 para travessa 2)
         int travessa_escolhida = rand() % 2;
 
-        // Escolha aleatória do salgado dentro da travessa escolhida
+        // escolha aleatória do salgado dentro da travessa escolhida
         float random_value = (float)rand() / RAND_MAX;
 
-        // Verifica se o salgado escolhido é um pastel, com base na travessa escolhida
+        // verifica se o salgado escolhido é um pastel, com base na travessa escolhida
         if ((travessa_escolhida == 0 && random_value < prob_travessa1) ||
             (travessa_escolhida == 1 && random_value < prob_travessa2)) {
             pastel_contador++;
