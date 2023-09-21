@@ -181,7 +181,7 @@ void Q12() {
     const double prob_reprovacao_t2 = 0.02;
 
     // pacote aceito em t1 e reprovado em t2
-    int pacotes_t1t2 = 0;
+    int pacotes_aceitacaot1_reprovacaot2 = 0;
 
     // número de simulações
     unsigned n = 1000000;
@@ -192,11 +192,11 @@ void Q12() {
 
         // verifica se o pacote foi aceito em t1 e reprovado em t2
         if (aceitacao_t1 <= prob_aceitacao_t1 && reprovacao_t2 <= prob_reprovacao_t2) {
-            pacotes_t1t2++;
+            pacotes_aceitacaot1_reprovacaot2++;
         }
     }
 
-    double prob_t1t2 = (double) pacotes_t1t2 / n;
+    double prob_t1t2 = (double) pacotes_aceitacaot1_reprovacaot2 / n;
 
     std::cout << "> Questão 12 - Resolvidos" << std::endl;
     std::cout << "Probabilidade de um pacote ser aceito em t1 e reprovado em t2: " << prob_t1t2 << std::endl;
