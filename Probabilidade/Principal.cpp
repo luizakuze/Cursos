@@ -1,3 +1,5 @@
+//IFSC CLION:   http://license-server.sj.ifsc.edu.br:8080/
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
