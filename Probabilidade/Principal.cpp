@@ -3,7 +3,7 @@
 #include <ctime>
 
 using namespace std;
-/// Questão 7 - Lista Básica (Apresentação)
+/// Questão 07 - Lista Básica (Apresentação)
 /// \Enunciado Alguns amigos estão em uma lanchonete e há duas travessas na mesa com salgados. <br> A primeira travessa contém 3 pastéis e 5 coxinhas, e a segunda contém 2 coxinhas e 4 pastéis. <br>
 /// Se alguém escolher uma das travessas e, em seguida, pegar um salgado ao acaso, <br>
 /// qual é a probabilidade de ter pego um pastel? <br>
@@ -19,109 +19,97 @@ void Q7 () {
 
     int pegou_pastel = 0;
 
-    for (unsigned i = 0; i < n; ++i) {
-        int travessa_escolhida = rand() % 2; // 0 para travessa 1 e 1 para travessa 2
-
-        float salgado_escolhido = (float)rand() / RAND_MAX; // escolhe um salgado aleatório
+    for (unsigned i = 0; i < n; i++) {
+        int travessa_escolhida = rand() % 2 + 1; // 1 para travessa 1 e 2 para travessa 2
+        float salgado_escolhido = (float) rand() / RAND_MAX; // escolhe um salgado aleatório [0,1)
 
         // verifica se o salgado escolhido é um pastel, com base na travessa escolhida
-        if ((travessa_escolhida == 0 && salgado_escolhido < prob_travessa1) ||
-            (travessa_escolhida == 1 && salgado_escolhido < prob_travessa2)) {
+        if ((travessa_escolhida == 1 && salgado_escolhido < prob_travessa1) ||
+            (travessa_escolhida == 2 && salgado_escolhido < prob_travessa2)) {
             pegou_pastel++;
         }
     }
 
     float prob_pastel = (float) pegou_pastel / n;
-    std::cout << "Probabilidade total de pegar um pastel: " << prob_pastel << std::endl;
+    std::cout << "> Questão 07 - Apresentação" << endl;
+    std::cout << "Probabilidade total de pegar um pastel: " << prob_pastel << std::endl << std::endl;
 }
 
-/// Questão 9 - Lista Básica (Resolvidos)
+/// Questão 09 - Lista Básica (Resolvidos)
 /// \Enunciado Numa turma de curso de inglês com dez alunos, dentre eles Joana, quatro serão escolhidos para ganhar um livro. Qual a probabilidade de Joana ser sorteada?
 void Q9() {
     srand(time(NULL));
 
-    // Número total de alunos na turma
-    const int total_alunos = 10;
+    const int total_alunos = 10;     // número total de alunos na turma
+    const int alunos_a_escolher = 4; // alunos a serem escolhidos para ganhar um livro
+    const int alunos_com_joana = 1;  // alunos com joana
 
-    // Número de alunos a serem escolhidos para ganhar um livro
-    const int alunos_a_escolher = 4;
+    int sorteou_joana = 0;
 
-    // Número de alunos que incluem Joana
-    const int alunos_com_joana = 1;
-
-    // Variável para contar o número de vezes que Joana é sorteada
-    int joana_contador = 0;
-
-    // Número total de simulações
+    // número de simulações
     unsigned n = 1000000;
 
-    // Loop para realizar as simulações
-    for (unsigned i = 0; i < n; ++i) {
-        // Escolha aleatória dos alunos para ganhar um livro
-        int alunos_ganhadores = rand() % total_alunos + 1;  // De 1 a 10 alunos
+    for (unsigned i = 0; i < n; i++) {
+        int alunos_sorteados = rand() % total_alunos + 1;  // sorteia alunos da turma (1 a 10 alunos)
 
-        // Verifica se Joana está entre os alunos ganhadores
-        if (alunos_ganhadores <= alunos_a_escolher && alunos_ganhadores <= alunos_com_joana) {
-            joana_contador++;
+        // verifica se joana foi sorteada
+        if (alunos_sorteados <= alunos_a_escolher && alunos_sorteados <= alunos_com_joana) {
+            sorteou_joana++;
         }
     }
 
-    // Calcula a probabilidade de Joana ser sorteada
-    float probabilidade_joana = (float)joana_contador / n;
-
-    // Exibe a probabilidade de Joana ser sorteada
-    std::cout << "Probabilidade de Joana ser sorteada: " << probabilidade_joana << std::endl;
+    float probabilidade_joana = (float) sorteou_joana / n;
+    std::cout << "> Questão 09 - Resolvidos" << endl;
+    std::cout << "Probabilidade de Joana ser sorteada: " << probabilidade_joana << std::endl << std::endl;;
 }
 
-/// Questão 9 - Lista Básica (Propostos)
+/// Questão 09 - Lista Básica (Propostos)
 /// \Enunciado Considere um conjunto de 4 números dos quais nenhum deles é zero, dois são positivos e
 /// dois são negativos. Sorteamos ao acaso, com reposição, 2 números desse conjunto. <br>
 /// Determine a probabilidade de: <br>
 /// a.) Um deles ser negativo <br>
 /// b.) O quociente entre eles ser negativo. <br>
 /// c.) Os dois n´umeros terem o mesmo sinal
-
 void Q9p() {
     srand(time(NULL)); // inicializa o gerador de números aleatórios
 
     unsigned n = 1000000; // número de simulações
 
     // conjunto de 4 números (2 positivos e 2 negativos)
-    const int P1 = 0;
-    const int P2 = 1;
-    const int N1 = 2;
-    const int N2 = 3;
+    const int P1 = 1;
+    const int P2 = 2;
+    const int N1 = 3;
+    const int N2 = 4;
 
     float prob_negativo = 0;
     float prob_quociente_negativo = 0;
     float prob_mesmo_sinal = 0;
 
-    // executa as simulações
     for (unsigned i = 0; i < n; i++) {
-        int num_escolhido = rand() % 4; // 0 para P1, 1 para P2, 2 para N1 e 3 para N2
-        int num2_escolhido = rand() % 4;
+        int num_escolhido = rand() % 4 + 1; // 1 para P1, 2 para P2, 3 para N1 e 4 para N2
+        int num2_escolhido = rand() % 4 + 1;
 
-        // probabilidade de um deles ser negativo
-        if ((num_escolhido == N1 || num_escolhido == N2) && (num2_escolhido == P1 || num2_escolhido == P2))
+        // probabilidade de um deles ser negativo (a)
+        if ((num_escolhido == N1 || num_escolhido == N2) || (num2_escolhido == N1 || num2_escolhido == N2))
             prob_negativo++;
 
         // probabilidade do quociente ser negativo (b)
-        if ((num_escolhido < 2 && num2_escolhido >= 2) || (num_escolhido >= 2 && num2_escolhido < 2))
+        if ((num_escolhido < 3 && num2_escolhido >= 3) || (num_escolhido >= 3 && num2_escolhido < 3))
             prob_quociente_negativo++;
 
         // probabilidade dos números terem o mesmo sinal (c)
-        if ((num_escolhido < 2 && num2_escolhido < 2) || (num_escolhido >= 2 && num2_escolhido >= 2))
+        if ((num_escolhido < 3 && num2_escolhido < 3) || (num_escolhido >= 3 && num2_escolhido >= 3))
             prob_mesmo_sinal++;
     }
 
-    // dividindo os casos favoráveis pelo número totald e casos
     prob_negativo /= n;
     prob_quociente_negativo /= n;
     prob_mesmo_sinal  /= n;
 
-    std::cout << "Probabilidade de serem negativos: " << prob_negativo << " \n";
-    std::cout << "Probabilidade de quociente negativo: " << prob_quociente_negativo << " \n";
-    std::cout << "Probabilidade de terem o mesmo sinal: " << prob_mesmo_sinal << " \n";
+    std::cout << "> Questão 09 - Propostos" << std::endl;
+    std::cout << "Probabilidade de um deles ser negativo: " << prob_negativo << std::endl;
+    std::cout << "Probabilidade de quociente ser negativo: " << prob_quociente_negativo << std::endl;
+    std::cout << "Probabilidade de terem o mesmo sinal: " << prob_mesmo_sinal << std::endl << std::endl;
 }
 
 /// Questão 13 - Lista de Condicional (Apresentação)
@@ -150,35 +138,32 @@ void Q13() {
 
     // executa as simulações
     for (unsigned i = 0; i < n; i++) {
-        int P_escolhido = rand() % 4; // escolhe uma porta entre 0, 1, 2, 3
+        int porta_escolhida = rand() % 4 + 1; // escolhe uma porta entre 1, 2, 3, 4
 
-        // entrou na P1, tem 2 buracos
-        if (P_escolhido == P1) {
-            int buraco_escolhido = rand() % 2;
-            if (buraco_escolhido == 0)
-                prob_p1++;
+        int buraco_escolhido;
+        switch (porta_escolhida) {
+            case (1):
+                // entrou na P1, tem 2 buracos
+                buraco_escolhido = rand() % 2; // entre 0 e 1
+                if (buraco_escolhido == 0) // escolhendo buraco correto como o 0
+                    prob_p1++;
+                break;
+            case (2):
+                // entrou na P2, tem 4 buracos
+                buraco_escolhido = rand() % 4;
+                if (buraco_escolhido == 0)
+                    prob_p2++;
+                break;
+            case (3):
+                // entrou na P3, tem 1 buraco
+                prob_p3++;
+                break;
+            case (4):
+                buraco_escolhido = rand() % 5;
+                if (buraco_escolhido == 0)
+                    prob_p4++;
+                break;
         }
-
-        // entrou na P2, tem 4 buracos
-        if (P_escolhido == P2) {
-            int buraco_escolhido = rand() % 4;
-            if (buraco_escolhido == 0)
-                prob_p2++;
-        }
-
-        // entrou na P3, tem 1 buraco
-        if (P_escolhido == P3) {
-            prob_p3++;
-        }
-
-        // entrou na P4, tem 5 buracos
-        if (P_escolhido == P4) {
-            int buraco_escolhido = rand() % 5;
-            if (buraco_escolhido == 0)
-                prob_p4++;
-        }
-
-        /// USAR SWITCH CASE!!
     }
 
     // dividindo os casos favoráveis pelo número total de casos
@@ -189,11 +174,8 @@ void Q13() {
 
     float prob_total = prob_p1 + prob_p2 + prob_p3 + prob_p4;
 
-    std::cout << "Probabilidade de sucesso em p1: " << prob_p1 << " \n";
-    std::cout << "Probabilidade de sucesso em p2: " << prob_p2 << " \n";
-    std::cout << "Probabilidade de sucesso em p3: " << prob_p3 << " \n";
-    std::cout << "Probabilidade de sucesso em p4: " << prob_p4 << " \n";
-    std::cout << "Probabilidade de sucesso total: " << prob_total << "\n";
+    std::cout << "> Questão 13 - Apresentação" << std::endl;
+    std::cout << "Probabilidade de sucesso total: " << prob_total << std::endl << std::endl;;
 }
 /// Questão 12 - Lista de Condicional (Apresentação) <br> <br>
 /// \Enunciado Antes de serem carregados em um caminhão de distribuição, os pacotes estão sujeitos a testes independentes,
@@ -237,16 +219,17 @@ void Q12() {
     double probabilidade = (double) pacotes_aceitos_primeiro_reprovados_segundo / n;
 
     // Exibe a probabilidade
+    std::cout << "> Questão 12 - Resolvidos" << std::endl;
     std::cout << "Probabilidade de um pacote ser aceito no primeiro teste e reprovado no segundo teste: " << probabilidade << std::endl;
 }
 
 int main() {
-    // exercícios da lista básica
-    Q7();   // apresentação
+    std::cout << "..:Exercícios da Lista Básica:.." << std::endl << std::endl;
+    Q7(); // apresentação
     Q9();   // resolvidos
     Q9p();  // propostos
 
-    // exercícios da lista de condicional
+    std::cout << "..:Exercícios da Lista de Condicional:.." << std::endl << std::endl;
     Q13();  // apresentação
     Q12();  // resolvidos
 
