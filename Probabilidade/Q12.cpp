@@ -11,44 +11,39 @@
 #include <cstdlib>
 #include <ctime>
 
-using namespace std;
-
 int main() {
-    srand(time(NULL)); // inicializa o gerador de números aleatórios
+    srand(time(NULL));  // inicializa o gerador de números aleatórios com o tempo atual
 
-    unsigned n = 1000000; // número de simulações
+    // Probabilidade de aceitação no primeiro teste
+    const double prob_aceitacao_primeiro_teste = 0.95;
+    const double prob_reprovacao_segundo_teste = 0.02;
 
-    // probabilidade dos testes
-    const float t1 = 0.05;
-    const float t2 = 0.02;
+    // Variável para contar o número de vezes que um pacote é aceito no primeiro teste e reprovado no segundo
+    int pacotes_aceitos_primeiro_reprovados_segundo = 0;
 
-    float prob_t1 = 0;
-    float prob_t2 = 0;
-    float prob_t2t1 = 0;
+    // Número total de simulações
+    unsigned n = 1000000;
 
-    // executa as simulações
-    for (unsigned i = 0; i < n; i++) {
-        float peso_random = rand ()% 2;  // 0 e 1 para peso
-        float dimensao_random = rand ()% 2;  // 0 e 1 para dimensão
+    // Loop para realizar as simulações
+    for (unsigned i = 0; i < n; ++i) {
+        // Gera um número aleatório para simular a probabilidade de aceitação no primeiro teste
+        double random_aceitacao_primeiro_teste = (double) rand() / RAND_MAX;
 
-        // se o pacote excede o limite de peso
-        if (peso_random <= t1) {
-            prob_t1 += 1.0;
+        // Gera um número aleatório para simular a probabilidade de reprovação no segundo teste
+        double random_reprovacao_segundo_teste = (double) rand() / RAND_MAX;
 
-            // se exceder o limite de dimensão também
-            // já é a probabilidade da interseção de t1 e t2
-            if (dimensao_random <= t2)
-                prob_t2t1 += 1.0;
+        // Verifica se o pacote foi aceito no primeiro teste e reprovado no segundo
+        if (random_aceitacao_primeiro_teste <= prob_aceitacao_primeiro_teste &&
+            random_reprovacao_segundo_teste <= prob_reprovacao_segundo_teste) {
+            pacotes_aceitos_primeiro_reprovados_segundo++;
         }
     }
 
-    prob_t1 /= n;
-    prob_t2 /= n;
-    prob_t2t1 /= prob_t1; // prob t2 dado que t1
+    // Calcula a probabilidade de um pacote ser aceito no primeiro teste e reprovado no segundo
+    double probabilidade = (double) pacotes_aceitos_primeiro_reprovados_segundo / n;
 
-    std::cout << "P(A): " << prob_t1 << "\n";
-    std::cout << "P(B): " << prob_t2 << "\n";
-    std::cout << "P(B|A): " << prob_t2t1 << "\n";
+    // Exibe a probabilidade
+    std::cout << "Probabilidade de um pacote ser aceito no primeiro teste e reprovado no segundo teste: " << probabilidade << std::endl;
 
     return 0;
 }
