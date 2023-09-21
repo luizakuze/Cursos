@@ -162,7 +162,7 @@ void Q13() {
     prob_p4 /= n;
 
     float prob_total = prob_p1 + prob_p2 + prob_p3 + prob_p4;
-    
+
     std::cout << "> Questão 13 - Apresentação" << std::endl;
     std::cout << "Probabilidade de sucesso total: " << prob_total << std::endl << std::endl;;
 }
