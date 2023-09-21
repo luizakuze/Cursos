@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <ctime>
 
-using namespace std;
 /// Questão 07 - Lista Básica (Apresentação)
 /// \Enunciado Alguns amigos estão em uma lanchonete e há duas travessas na mesa com salgados. <br> A primeira travessa contém 3 pastéis e 5 coxinhas, e a segunda contém 2 coxinhas e 4 pastéis. <br>
 /// Se alguém escolher uma das travessas e, em seguida, pegar um salgado ao acaso, <br>
@@ -11,8 +10,8 @@ void Q7 () {
     srand(time(NULL));
 
     // probabilidade de pegar um pastel em cada travessa
-    float prob_travessa1 = 3.0 / (3 + 5);
-    float prob_travessa2 = 4.0 / (4 + 2);
+    const float prob_travessa1 = 3.0 / (3 + 5);
+    const float prob_travessa2 = 4.0 / (4 + 2);
 
     // número de simulações
     unsigned n = 1000000;
@@ -23,7 +22,7 @@ void Q7 () {
         int travessa_escolhida = rand() % 2 + 1; // 1 para travessa 1 e 2 para travessa 2
         float salgado_escolhido = (float) rand() / RAND_MAX; // escolhe um salgado aleatório [0,1)
 
-        // verifica se o salgado escolhido é um pastel, com base na travessa escolhida
+        // verifica se o salgado escolhido é um pastel
         if ((travessa_escolhida == 1 && salgado_escolhido < prob_travessa1) ||
             (travessa_escolhida == 2 && salgado_escolhido < prob_travessa2)) {
             pegou_pastel++;
@@ -31,7 +30,7 @@ void Q7 () {
     }
 
     float prob_pastel = (float) pegou_pastel / n;
-    std::cout << "> Questão 07 - Apresentação" << endl;
+    std::cout << "> Questão 07 - Apresentação" << std::endl;
     std::cout << "Probabilidade total de pegar um pastel: " << prob_pastel << std::endl << std::endl;
 }
 
@@ -62,15 +61,13 @@ void Q9() {
     std::cout << "Probabilidade de Joana ser sorteada: " << probabilidade_joana << std::endl << std::endl;
 }
 
-
-
 /// Questão 09 - Lista Básica (Propostos)
 /// \Enunciado Considere um conjunto de 4 números dos quais nenhum deles é zero, dois são positivos e
 /// dois são negativos. Sorteamos ao acaso, com reposição, 2 números desse conjunto. <br>
 /// Determine a probabilidade de: <br>
 /// a.) Um deles ser negativo <br>
 /// b.) O quociente entre eles ser negativo. <br>
-/// c.) Os dois n´umeros terem o mesmo sinal
+/// c.) Os dois números terem o mesmo sinal
 void Q9p() {
     srand(time(NULL));
 
@@ -116,7 +113,7 @@ void Q9p() {
 /// O jogador é pressionado em tomar uma decisão e em sua pressa faz escolhas aleatórias.
 /// <br> Qual é a probabilidade de ela chegar em segurança ao refúgio?
 void Q13() {
-    srand(time(NULL)); // inicializa o gerador de números aleatórios
+    srand(time(NULL));
 
     unsigned n = 1000000; // número de simulações
 
@@ -148,6 +145,7 @@ void Q13() {
                 prob_p3++;
                 break;
             case (4):
+                // entrou na P4, tem 5 buracos
                 buraco_escolhido = rand() % 5;
                 if (buraco_escolhido == 0)
                     prob_p4++;
@@ -155,7 +153,7 @@ void Q13() {
         }
     }
 
-    // dividindo os casos favoráveis pelo número total de casos
+    // dividindo pelo número total de casos
     prob_p1 /= n;
     prob_p2 /= n;
     prob_p3 /= n;
@@ -166,16 +164,15 @@ void Q13() {
     std::cout << "> Questão 13 - Apresentação" << std::endl;
     std::cout << "Probabilidade de sucesso total: " << prob_total << std::endl << std::endl;;
 }
+
 /// Questão 12 - Lista de Condicional (Apresentação) <br> <br>
 /// \Enunciado Antes de serem carregados em um caminhão de distribuição, os pacotes estão sujeitos a testes independentes,
 /// para garantir que o motorista do caminhão possa segurá-los com segurança.
 /// O peso do pacote não deve exceder 30 kg e a soma das três dimensões deve ser inferior a 1m.
 /// Tem sido observado que 5% dos pacotes excedem o limite de peso e 2% excedem o limite de dimensão.
 /// Qual é a probabilidade de que um pacote que atenda ao requisito de peso falhe no requisito de dimensão? <br> <br>
-
 /// * t1 = exceder o limite de peso <br>
 /// * t2 = exceder o limite de dimensão */
-
 void Q12() {
     srand(time(NULL));
 
@@ -184,25 +181,25 @@ void Q12() {
     const double prob_reprovacao_t2 = 0.02;
 
     // pacote aceito em t1 e reprovado em t2
-    int pacotes_aceitacaot1_reprovacaot2 = 0;
+    int pacotes_t1t2 = 0;
 
     // número de simulações
     unsigned n = 1000000;
 
-    for (unsigned i = 0; i < n; ++i) {
+    for (unsigned i = 0; i < n; i++) {
         double aceitacao_t1 = (double) rand() / RAND_MAX;  // aceitação em t1
         double reprovacao_t2 = (double) rand() / RAND_MAX; // reprovação em t2
 
         // verifica se o pacote foi aceito em t1 e reprovado em t2
         if (aceitacao_t1 <= prob_aceitacao_t1 && reprovacao_t2 <= prob_reprovacao_t2) {
-            pacotes_aceitacaot1_reprovacaot2++;
+            pacotes_t1t2++;
         }
     }
 
-    double prob_total = (double) pacotes_aceitacaot1_reprovacaot2 / n;
+    double prob_t1t2 = (double) pacotes_t1t2 / n;
 
     std::cout << "> Questão 12 - Resolvidos" << std::endl;
-    std::cout << "Probabilidade de um pacote ser aceito no primeiro teste e reprovado no segundo teste: " << prob_total << std::endl;
+    std::cout << "Probabilidade de um pacote ser aceito em t1 e reprovado em t2: " << prob_t1t2 << std::endl;
 }
 
 int main() {
