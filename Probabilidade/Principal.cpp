@@ -42,7 +42,6 @@ void Q9() {
 
     const int total_alunos = 10;     // número total de alunos na turma
     const int alunos_a_escolher = 4; // alunos a serem escolhidos para ganhar um livro
-    const int alunos_com_joana = 1;  // alunos com joana
 
     int sorteou_joana = 0;
 
@@ -52,16 +51,19 @@ void Q9() {
     for (unsigned i = 0; i < n; i++) {
         int alunos_sorteados = rand() % total_alunos + 1;  // sorteia alunos da turma (1 a 10 alunos)
 
-        // verifica se joana foi sorteada
-        if (alunos_sorteados <= alunos_a_escolher && alunos_sorteados <= alunos_com_joana) {
+        // Verifica se Joana foi sorteada
+        if (alunos_sorteados <= alunos_a_escolher) {
             sorteou_joana++;
         }
     }
 
-    float probabilidade_joana = (float) sorteou_joana / n;
-    std::cout << "> Questão 09 - Resolvidos" << endl;
-    std::cout << "Probabilidade de Joana ser sorteada: " << probabilidade_joana << std::endl << std::endl;;
+    float probabilidade_joana = float (sorteou_joana) / n;
+
+    std::cout << "> Questão 09 - Resolvidos" << std::endl;
+    std::cout << "Probabilidade de Joana ser sorteada: " << probabilidade_joana << std::endl << std::endl;
 }
+
+
 
 /// Questão 09 - Lista Básica (Propostos)
 /// \Enunciado Considere um conjunto de 4 números dos quais nenhum deles é zero, dois são positivos e
@@ -71,40 +73,35 @@ void Q9() {
 /// b.) O quociente entre eles ser negativo. <br>
 /// c.) Os dois n´umeros terem o mesmo sinal
 void Q9p() {
-    srand(time(NULL)); // inicializa o gerador de números aleatórios
+    srand(time(NULL));
 
-    unsigned n = 1000000; // número de simulações
+    // número de simulações
+    unsigned n = 100000;
 
-    // conjunto de 4 números (2 positivos e 2 negativos)
-    const int P1 = 1;
-    const int P2 = 2;
-    const int N1 = 3;
-    const int N2 = 4;
-
-    float prob_negativo = 0;
-    float prob_quociente_negativo = 0;
-    float prob_mesmo_sinal = 0;
-
+    int negativo = 0;
+    int quociente_negativo = 0;
+    int mesmo_sinal = 0;
+    
     for (unsigned i = 0; i < n; i++) {
         int num_escolhido = rand() % 4 + 1; // 1 para P1, 2 para P2, 3 para N1 e 4 para N2
         int num2_escolhido = rand() % 4 + 1;
 
         // probabilidade de um deles ser negativo (a)
-        if ((num_escolhido == N1 || num_escolhido == N2) || (num2_escolhido == N1 || num2_escolhido == N2))
-            prob_negativo++;
+        if ((num_escolhido >= 3 && num2_escolhido < 3) || (num2_escolhido >= 3 && num_escolhido < 3))
+            negativo++;
 
         // probabilidade do quociente ser negativo (b)
         if ((num_escolhido < 3 && num2_escolhido >= 3) || (num_escolhido >= 3 && num2_escolhido < 3))
-            prob_quociente_negativo++;
+            quociente_negativo++;
 
         // probabilidade dos números terem o mesmo sinal (c)
-        if ((num_escolhido < 3 && num2_escolhido < 3) || (num_escolhido >= 3 && num2_escolhido >= 3))
-            prob_mesmo_sinal++;
+        if ((num_escolhido >= 3 && num2_escolhido >= 3) || (num_escolhido <= 2 && num2_escolhido <= 2))
+            mesmo_sinal++;
     }
 
-    prob_negativo /= n;
-    prob_quociente_negativo /= n;
-    prob_mesmo_sinal  /= n;
+    float prob_negativo = (float) negativo / n;
+    float prob_quociente_negativo = (float) quociente_negativo / n;
+    float prob_mesmo_sinal = (float) mesmo_sinal / n;
 
     std::cout << "> Questão 09 - Propostos" << std::endl;
     std::cout << "Probabilidade de um deles ser negativo: " << prob_negativo << std::endl;
@@ -119,17 +116,10 @@ void Q9p() {
 /// dependendo, respectivamente, da porta que ela atravessa. Em cada caso, um buraco leva ao porto seguro.
 /// O jogador é pressionado em tomar uma decisão e em sua pressa faz escolhas aleatórias.
 /// <br> Qual é a probabilidade de ela chegar em segurança ao refúgio?
-
 void Q13() {
     srand(time(NULL)); // inicializa o gerador de números aleatórios
 
     unsigned n = 1000000; // número de simulações
-
-    //  probabilidade de escolher qualquer uma das portas
-    const int P1 = 0; //2 buracos ... prob 1/2
-    const int P2 = 1; //4 buracos ... prob 1/4
-    const int P3 = 2; //1 buracos ... prob 1
-    const int P4 = 3; //5 buracos ... prob 1/5
 
     float prob_p1 = 0;
     float prob_p2 = 0;
@@ -188,39 +178,32 @@ void Q13() {
 /// * t2 = exceder o limite de dimensão */
 
 void Q12() {
-    srand(time(NULL));  // inicializa o gerador de números aleatórios com o tempo atual
+    srand(time(NULL));
 
-    // Probabilidade de aceitação no primeiro teste
-    const double prob_aceitacao_primeiro_teste = 0.95;
-    const double prob_reprovacao_segundo_teste = 0.02;
+    // probabilidade de cada teste
+    const double prob_aceitacao_t1 = 0.95;
+    const double prob_reprovacao_t2 = 0.02;
 
-    // Variável para contar o número de vezes que um pacote é aceito no primeiro teste e reprovado no segundo
-    int pacotes_aceitos_primeiro_reprovados_segundo = 0;
+    // pacote aceito em t1 e reprovado em t2
+    int pacotes_aceitacaot1_reprovacaot2 = 0;
 
-    // Número total de simulações
+    // número de simulações
     unsigned n = 1000000;
 
-    // Loop para realizar as simulações
     for (unsigned i = 0; i < n; ++i) {
-        // Gera um número aleatório para simular a probabilidade de aceitação no primeiro teste
-        double random_aceitacao_primeiro_teste = (double) rand() / RAND_MAX;
+        double aceitacao_t1 = (double) rand() / RAND_MAX;  // aceitação em t1
+        double reprovacao_t2 = (double) rand() / RAND_MAX; // reprovação em t2
 
-        // Gera um número aleatório para simular a probabilidade de reprovação no segundo teste
-        double random_reprovacao_segundo_teste = (double) rand() / RAND_MAX;
-
-        // Verifica se o pacote foi aceito no primeiro teste e reprovado no segundo
-        if (random_aceitacao_primeiro_teste <= prob_aceitacao_primeiro_teste &&
-            random_reprovacao_segundo_teste <= prob_reprovacao_segundo_teste) {
-            pacotes_aceitos_primeiro_reprovados_segundo++;
+        // verifica se o pacote foi aceito em t1 e reprovado em t2
+        if (aceitacao_t1 <= prob_aceitacao_t1 && reprovacao_t2 <= prob_reprovacao_t2) {
+            pacotes_aceitacaot1_reprovacaot2++;
         }
     }
 
-    // Calcula a probabilidade de um pacote ser aceito no primeiro teste e reprovado no segundo
-    double probabilidade = (double) pacotes_aceitos_primeiro_reprovados_segundo / n;
+    double prob_total = (double) pacotes_aceitacaot1_reprovacaot2 / n;
 
-    // Exibe a probabilidade
     std::cout << "> Questão 12 - Resolvidos" << std::endl;
-    std::cout << "Probabilidade de um pacote ser aceito no primeiro teste e reprovado no segundo teste: " << probabilidade << std::endl;
+    std::cout << "Probabilidade de um pacote ser aceito no primeiro teste e reprovado no segundo teste: " << prob_total << std::endl;
 }
 
 int main() {
