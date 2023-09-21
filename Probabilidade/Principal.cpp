@@ -57,8 +57,7 @@ void Q9() {
         }
     }
 
-    float probabilidade_joana = float (sorteou_joana) / n;
-
+    double probabilidade_joana = float (sorteou_joana) / n;
     std::cout << "> Questão 09 - Resolvidos" << std::endl;
     std::cout << "Probabilidade de Joana ser sorteada: " << probabilidade_joana << std::endl << std::endl;
 }
@@ -81,7 +80,7 @@ void Q9p() {
     int negativo = 0;
     int quociente_negativo = 0;
     int mesmo_sinal = 0;
-    
+
     for (unsigned i = 0; i < n; i++) {
         int num_escolhido = rand() % 4 + 1; // 1 para P1, 2 para P2, 3 para N1 e 4 para N2
         int num2_escolhido = rand() % 4 + 1;
@@ -163,7 +162,7 @@ void Q13() {
     prob_p4 /= n;
 
     float prob_total = prob_p1 + prob_p2 + prob_p3 + prob_p4;
-
+    
     std::cout << "> Questão 13 - Apresentação" << std::endl;
     std::cout << "Probabilidade de sucesso total: " << prob_total << std::endl << std::endl;;
 }
@@ -208,7 +207,7 @@ void Q12() {
 
 int main() {
     std::cout << "..:Exercícios da Lista Básica:.." << std::endl << std::endl;
-    Q7(); // apresentação
+    Q7();   // apresentação
     Q9();   // resolvidos
     Q9p();  // propostos
 
