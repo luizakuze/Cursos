@@ -81,19 +81,19 @@ void Q9p() {
     double prob_mesmo_sinal = 0;
 
     for (unsigned i = 0; i < N; i++) {
-        // escolhendo 2 números, considerando:
+        // escolhe 2 números, considerando:
         // 0 e 1 para positivos e 2 e 3 para negativos
-        int num_escolhido = rand() % 4;
-        int num2_escolhido = rand() % 4;
+        int num1 = rand() % 4;
+        int num2 = rand() % 4;
 
         // probabilidade de um deles ser negativo (a) e probabilidade do quociente ser negativo (b)
-        if ((num_escolhido >= 2 && num2_escolhido < 2) || (num2_escolhido >= 2 && num_escolhido < 2)) {
+        if ((num1 >= 2 && num2 < 2) || (num2 >= 2 && num1 < 2)) {
             prob_negativo++;
             prob_quociente_negativo++;
         }
 
         // probabilidade dos números terem o mesmo sinal (c)
-        if ((num_escolhido >= 2 && num2_escolhido >= 2) || (num_escolhido < 2 && num2_escolhido < 2)) {
+        if ((num1 >= 2 && num2 >= 2) || (num1 < 2 && num2 < 2)) {
             prob_mesmo_sinal++;
         }
     }
