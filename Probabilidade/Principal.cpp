@@ -154,14 +154,8 @@ void Q13() {
                     prob_p4++;
         }
     }
-
-    // dividindo pelo número total de casos
-    prob_p1 /= N;
-    prob_p2 /= N;
-    prob_p3 /= N;
-    prob_p4 /= N;
-
-    double prob_total = prob_p1 + prob_p2 + prob_p3 + prob_p4;
+    
+    double prob_total = (prob_p1 + prob_p2 + prob_p3 + prob_p4) / N;
 
     std::cout << "> Questão 13 - Apresentação" << std::endl;
     std::cout << "Probabilidade de sucesso total: " << prob_total << std::endl << std::endl;;
