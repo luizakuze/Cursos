@@ -117,9 +117,9 @@ void Q9p() {
 /// <br> Qual é a probabilidade de ela chegar em segurança ao refúgio?
 void Q13() {
     srand(time(NULL));
-
-    // probabilidade de ter sucesso em cada uma das portas
-    double teve_sucesso = 0;
+    
+    // conta quantas vezes teve sucesso na escolha
+    int teve_sucesso = 0;
 
     for (unsigned i = 0; i < N; i++) {
         int porta_escolhida = rand() % 4 + 1; // escolhe uma porta entre 1, 2, 3, 4
