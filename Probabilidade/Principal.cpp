@@ -182,7 +182,7 @@ void Q12() {
         double reprovacao_t2 = (double) rand() / RAND_MAX; // reprovação em t2
 
         // verifica se o pacote foi aceito em t1 e reprovado em t2
-        if (aceitacao_t1 <= prob_aceitacao_t1 && reprovacao_t2 <= prob_reprovacao_t2) {
+        if (aceitacao_t1 < prob_aceitacao_t1 && reprovacao_t2 < prob_reprovacao_t2) {
             pacotes_aceitacaot1_reprovacaot2++;
         }
     }
