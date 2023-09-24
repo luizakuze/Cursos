@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <set>
-#define N 10000 // número de simulações
+#define N 100000 // número de simulações
 
 /// Questão 07 - Lista Básica (Apresentação)
 /// \Enunciado Alguns amigos estão em uma lanchonete e há duas travessas na mesa com salgados. <br> A primeira travessa contém 3 pastéis e 5 coxinhas, e a segunda contém 2 coxinhas e 4 pastéis. <br>
@@ -118,10 +118,8 @@ void Q9p() {
 void Q13() {
     srand(time(NULL));
 
-    double prob_p1 = 0;
-    double prob_p2 = 0;
-    double prob_p3 = 0;
-    double prob_p4 = 0;
+    // probabilidade de ter sucesso em cada uma das portas
+    double teve_sucesso = 0;
 
     for (unsigned i = 0; i < N; i++) {
         int porta_escolhida = rand() % 4 + 1; // escolhe uma porta entre 1, 2, 3, 4
@@ -132,33 +130,33 @@ void Q13() {
                 // entrou na P1, tem 2 buracos
                 buraco_escolhido = rand() % 2; // entre 0 e 1
                 if (buraco_escolhido == 0) // escolhendo buraco correto como o 0
-                    prob_p1++;
+                    teve_sucesso++;
                 break;
 
             case (2):
                 // entrou na P2, tem 4 buracos
                 buraco_escolhido = rand() % 4;
                 if (buraco_escolhido == 0)
-                    prob_p2++;
+                    teve_sucesso++;
                 break;
 
             case (3):
                 // entrou na P3, tem 1 buraco
-                prob_p3++;
+                teve_sucesso++;
                 break;
 
             default:
                 // entrou na P4, tem 5 buracos
                 buraco_escolhido = rand() % 5;
                 if (buraco_escolhido == 0)
-                    prob_p4++;
+                    teve_sucesso++;
         }
     }
-    
-    double prob_total = (prob_p1 + prob_p2 + prob_p3 + prob_p4) / N;
+
+    double prob_sucesso = (double) teve_sucesso / N;
 
     std::cout << "> Questão 13 - Apresentação" << std::endl;
-    std::cout << "Probabilidade de sucesso total: " << prob_total << std::endl << std::endl;;
+    std::cout << "Probabilidade de sucesso total: " << prob_sucesso << std::endl << std::endl;;
 }
 
 /// Questão 12 - Lista de Condicional (Apresentação) <br> <br>
