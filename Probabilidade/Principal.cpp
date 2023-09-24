@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <set>
 
 /// Questão 07 - Lista Básica (Apresentação)
 /// \Enunciado Alguns amigos estão em uma lanchonete e há duas travessas na mesa com salgados. <br> A primeira travessa contém 3 pastéis e 5 coxinhas, e a segunda contém 2 coxinhas e 4 pastéis. <br>
@@ -16,13 +17,13 @@ void Q7 () {
     const float prob_travessa2 = 4.0 / (4 + 2);
 
     // número de simulações
-    unsigned n = 1000000;
+    unsigned n = 100000;
 
     int pegou_pastel = 0;
 
     for (unsigned i = 0; i < n; i++) {
         int travessa_escolhida = rand() % 2 + 1; // 1 para travessa 1 e 2 para travessa 2
-        float salgado_escolhido = (float) rand() / RAND_MAX; // escolhe um salgado aleatório [0,1)
+        float salgado_escolhido = (float) rand() / RAND_MAX;
 
         // verifica se o salgado escolhido é um pastel
         if ((travessa_escolhida == 1 && salgado_escolhido < prob_travessa1) ||
@@ -45,22 +46,27 @@ void Q9() {
     const int alunos_a_escolher = 4; // alunos a serem escolhidos para ganhar um livro
 
     int sorteou_joana = 0;
-
-    // número de simulações
-    unsigned n = 1000000;
+    unsigned n = 10000; // número de simulações
 
     for (unsigned i = 0; i < n; i++) {
-        int alunos_sorteados = rand() % total_alunos + 1;  // sorteia alunos da turma (1 a 10 alunos)
+        std::set<int> alunos_escolhidos;
 
-        // Verifica se Joana foi sorteada
-        if (alunos_sorteados <= alunos_a_escolher) {
+        // escolhe 4 alunos
+        while (alunos_escolhidos.size() < alunos_a_escolher) {
+            int aluno_sorteado = rand() % total_alunos + 1;  // de 1 até 10 alunos
+            alunos_escolhidos.insert(aluno_sorteado);     // insere o aluno sorteado no set
+        }
+
+        // verifica se Joana (representada pelo número 1) foi sorteada
+        if (alunos_escolhidos.find(1) != alunos_escolhidos.end()) {
             sorteou_joana++;
         }
     }
 
-    double probabilidade_joana = float (sorteou_joana) / n;
+    double probabilidade = (double) sorteou_joana / n;
+
     std::cout << "> Questão 09 - Resolvidos" << std::endl;
-    std::cout << "Probabilidade de Joana ser sorteada: " << probabilidade_joana << std::endl << std::endl;
+    std::cout << "A probabilidade de Joana ser sorteada é: " << probabilidade << std::endl << std::endl;
 }
 
 /// Questão 09 - Lista Básica (Propostos)
@@ -76,30 +82,31 @@ void Q9p() {
     // número de simulações
     unsigned n = 100000;
 
-    int negativo = 0;
-    int quociente_negativo = 0;
-    int mesmo_sinal = 0;
+    double prob_negativo = 0;
+    double prob_quociente_negativo = 0;
+    double prob_mesmo_sinal = 0;
 
     for (unsigned i = 0; i < n; i++) {
-        int num_escolhido = rand() % 4 + 1; // 1 para P1, 2 para P2, 3 para N1 e 4 para N2
-        int num2_escolhido = rand() % 4 + 1;
+        // escolhendo 2 números, considerando:
+        // 0 e 1 para positivos e 2 e 3 para negativos
+        int num_escolhido = rand() % 4;
+        int num2_escolhido = rand() % 4;
 
-        // probabilidade de um deles ser negativo (a)
-        if ((num_escolhido >= 3 && num2_escolhido < 3) || (num2_escolhido >= 3 && num_escolhido < 3))
-            negativo++;
-
-        // probabilidade do quociente ser negativo (b)
-        if ((num_escolhido < 3 && num2_escolhido >= 3) || (num_escolhido >= 3 && num2_escolhido < 3))
-            quociente_negativo++;
+        // probabilidade de um deles ser negativo (a) e probabilidade do quociente ser negativo (b)
+        if ((num_escolhido >= 2 && num2_escolhido < 2) || (num2_escolhido >= 2 && num_escolhido < 2)) {
+            prob_negativo++;
+            prob_quociente_negativo++;
+        }
 
         // probabilidade dos números terem o mesmo sinal (c)
-        if ((num_escolhido >= 3 && num2_escolhido >= 3) || (num_escolhido <= 2 && num2_escolhido <= 2))
-            mesmo_sinal++;
+        if ((num_escolhido >= 2 && num2_escolhido >= 2) || (num_escolhido < 2 && num2_escolhido < 2)) {
+            prob_mesmo_sinal++;
+        }
     }
 
-    float prob_negativo = (float) negativo / n;
-    float prob_quociente_negativo = (float) quociente_negativo / n;
-    float prob_mesmo_sinal = (float) mesmo_sinal / n;
+    prob_negativo /= n;
+    prob_quociente_negativo /= n;
+    prob_mesmo_sinal /= n;
 
     std::cout << "> Questão 09 - Propostos" << std::endl;
     std::cout << "Probabilidade de um deles ser negativo: " << prob_negativo << std::endl;
@@ -124,7 +131,6 @@ void Q13() {
     float prob_p3 = 0;
     float prob_p4 = 0;
 
-    // executa as simulações
     for (unsigned i = 0; i < n; i++) {
         int porta_escolhida = rand() % 4 + 1; // escolhe uma porta entre 1, 2, 3, 4
 
@@ -136,22 +142,24 @@ void Q13() {
                 if (buraco_escolhido == 0) // escolhendo buraco correto como o 0
                     prob_p1++;
                 break;
+
             case (2):
                 // entrou na P2, tem 4 buracos
                 buraco_escolhido = rand() % 4;
                 if (buraco_escolhido == 0)
                     prob_p2++;
                 break;
+
             case (3):
                 // entrou na P3, tem 1 buraco
                 prob_p3++;
                 break;
-            case (4):
+
+            default:
                 // entrou na P4, tem 5 buracos
                 buraco_escolhido = rand() % 5;
                 if (buraco_escolhido == 0)
                     prob_p4++;
-                break;
         }
     }
 
@@ -174,7 +182,7 @@ void Q13() {
 /// Tem sido observado que 5% dos pacotes excedem o limite de peso e 2% excedem o limite de dimensão.
 /// Qual é a probabilidade de que um pacote que atenda ao requisito de peso falhe no requisito de dimensão? <br> <br>
 /// * t1 = exceder o limite de peso <br>
-/// * t2 = exceder o limite de dimensão */
+/// * t2 = exceder o limite de dimensão
 void Q12() {
     srand(time(NULL));
 
@@ -205,12 +213,12 @@ void Q12() {
 }
 
 int main() {
-    std::cout << "..:Exercícios da Lista Básica:.." << std::endl << std::endl;
+    std::cout << "..: Exercícios da Lista Básica :.." << std::endl << std::endl;
     Q7();   // apresentação
     Q9();   // resolvidos
     Q9p();  // propostos
 
-    std::cout << "..:Exercícios da Lista de Condicional:.." << std::endl << std::endl;
+    std::cout << "..: Exercícios da Lista de Condicional :.." << std::endl << std::endl;
     Q13();  // apresentação
     Q12();  // resolvidos
 
