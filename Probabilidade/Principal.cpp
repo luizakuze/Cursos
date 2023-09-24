@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <set>
+#define N 10000 // número de simulações
 
 /// Questão 07 - Lista Básica (Apresentação)
 /// \Enunciado Alguns amigos estão em uma lanchonete e há duas travessas na mesa com salgados. <br> A primeira travessa contém 3 pastéis e 5 coxinhas, e a segunda contém 2 coxinhas e 4 pastéis. <br>
@@ -13,17 +14,14 @@ void Q7 () {
     srand(time(NULL));
 
     // probabilidade de pegar um pastel em cada travessa
-    const float prob_travessa1 = 3.0 / (3 + 5);
-    const float prob_travessa2 = 4.0 / (4 + 2);
-
-    // número de simulações
-    unsigned n = 100000;
+    const double prob_travessa1 = 3.0 / (3 + 5);
+    const double prob_travessa2 = 4.0 / (4 + 2);
 
     int pegou_pastel = 0;
 
-    for (unsigned i = 0; i < n; i++) {
+    for (unsigned i = 0; i < N; i++) {
         int travessa_escolhida = rand() % 2 + 1; // 1 para travessa 1 e 2 para travessa 2
-        float salgado_escolhido = (float) rand() / RAND_MAX;
+        double salgado_escolhido = (double) rand() / RAND_MAX;
 
         // verifica se o salgado escolhido é um pastel
         if ((travessa_escolhida == 1 && salgado_escolhido < prob_travessa1) ||
@@ -32,7 +30,7 @@ void Q7 () {
         }
     }
 
-    float prob_pastel = (float) pegou_pastel / n;
+    double prob_pastel = (double) pegou_pastel / N;
     std::cout << "> Questão 07 - Apresentação" << std::endl;
     std::cout << "Probabilidade total de pegar um pastel: " << prob_pastel << std::endl << std::endl;
 }
@@ -46,9 +44,8 @@ void Q9() {
     const int alunos_a_escolher = 4; // alunos a serem escolhidos para ganhar um livro
 
     int sorteou_joana = 0;
-    unsigned n = 10000; // número de simulações
 
-    for (unsigned i = 0; i < n; i++) {
+    for (unsigned i = 0; i < N; i++) {
         std::set<int> alunos_escolhidos;
 
         // escolhe 4 alunos
@@ -63,7 +60,7 @@ void Q9() {
         }
     }
 
-    double probabilidade = (double) sorteou_joana / n;
+    double probabilidade = (double) sorteou_joana / N;
 
     std::cout << "> Questão 09 - Resolvidos" << std::endl;
     std::cout << "A probabilidade de Joana ser sorteada é: " << probabilidade << std::endl << std::endl;
@@ -79,14 +76,11 @@ void Q9() {
 void Q9p() {
     srand(time(NULL));
 
-    // número de simulações
-    unsigned n = 100000;
-
     double prob_negativo = 0;
     double prob_quociente_negativo = 0;
     double prob_mesmo_sinal = 0;
 
-    for (unsigned i = 0; i < n; i++) {
+    for (unsigned i = 0; i < N; i++) {
         // escolhendo 2 números, considerando:
         // 0 e 1 para positivos e 2 e 3 para negativos
         int num_escolhido = rand() % 4;
@@ -104,9 +98,9 @@ void Q9p() {
         }
     }
 
-    prob_negativo /= n;
-    prob_quociente_negativo /= n;
-    prob_mesmo_sinal /= n;
+    prob_negativo /= N;
+    prob_quociente_negativo /= N;
+    prob_mesmo_sinal /= N;
 
     std::cout << "> Questão 09 - Propostos" << std::endl;
     std::cout << "Probabilidade de um deles ser negativo: " << prob_negativo << std::endl;
@@ -124,14 +118,12 @@ void Q9p() {
 void Q13() {
     srand(time(NULL));
 
-    unsigned n = 1000000; // número de simulações
+    double prob_p1 = 0;
+    double prob_p2 = 0;
+    double prob_p3 = 0;
+    double prob_p4 = 0;
 
-    float prob_p1 = 0;
-    float prob_p2 = 0;
-    float prob_p3 = 0;
-    float prob_p4 = 0;
-
-    for (unsigned i = 0; i < n; i++) {
+    for (unsigned i = 0; i < N; i++) {
         int porta_escolhida = rand() % 4 + 1; // escolhe uma porta entre 1, 2, 3, 4
 
         int buraco_escolhido;
@@ -164,12 +156,12 @@ void Q13() {
     }
 
     // dividindo pelo número total de casos
-    prob_p1 /= n;
-    prob_p2 /= n;
-    prob_p3 /= n;
-    prob_p4 /= n;
+    prob_p1 /= N;
+    prob_p2 /= N;
+    prob_p3 /= N;
+    prob_p4 /= N;
 
-    float prob_total = prob_p1 + prob_p2 + prob_p3 + prob_p4;
+    double prob_total = prob_p1 + prob_p2 + prob_p3 + prob_p4;
 
     std::cout << "> Questão 13 - Apresentação" << std::endl;
     std::cout << "Probabilidade de sucesso total: " << prob_total << std::endl << std::endl;;
@@ -193,10 +185,7 @@ void Q12() {
     // pacote aceito em t1 e reprovado em t2
     int pacotes_aceitacaot1_reprovacaot2 = 0;
 
-    // número de simulações
-    unsigned n = 1000000;
-
-    for (unsigned i = 0; i < n; i++) {
+    for (unsigned i = 0; i < N; i++) {
         double aceitacao_t1 = (double) rand() / RAND_MAX;  // aceitação em t1
         double reprovacao_t2 = (double) rand() / RAND_MAX; // reprovação em t2
 
@@ -206,7 +195,7 @@ void Q12() {
         }
     }
 
-    double prob_t1t2 = (double) pacotes_aceitacaot1_reprovacaot2 / n;
+    double prob_t1t2 = (double) pacotes_aceitacaot1_reprovacaot2 / N;
 
     std::cout << "> Questão 12 - Resolvidos" << std::endl;
     std::cout << "Probabilidade de um pacote ser aceito em t1 e reprovado em t2: " << prob_t1t2 << std::endl;
