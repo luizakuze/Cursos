@@ -6,10 +6,10 @@
 #include <set>
 #define N 100000 // número de simulações
 
-/// Questão 07 - Lista Básica (Apresentação)
-/// \Enunciado Alguns amigos estão em uma lanchonete e há duas travessas na mesa com salgados. <br> A primeira travessa contém 3 pastéis e 5 coxinhas, e a segunda contém 2 coxinhas e 4 pastéis. <br>
-/// Se alguém escolher uma das travessas e, em seguida, pegar um salgado ao acaso, <br>
-/// qual é a probabilidade de ter pego um pastel? <br>
+/* Questão 07 - Lista Básica (Apresentação)
+ * Alguns amigos estão em uma lanchonete e há duas travessas na mesa com salgados. A primeira travessa contém 3 pastéis e 5 coxinhas, e a segunda contém 2 coxinhas e 4 pastéis.
+ * Se alguém escolher uma das travessas e, em seguida, pegar um salgado ao acaso,
+ * qual é a probabilidade de ter pego um pastel? */
 void Q7 () {
     srand(time(NULL));
 
@@ -35,8 +35,8 @@ void Q7 () {
     std::cout << "Probabilidade total de pegar um pastel: " << prob_pastel << std::endl << std::endl;
 }
 
-/// Questão 09 - Lista Básica (Resolvidos)
-/// \Enunciado Numa turma de curso de inglês com dez alunos, dentre eles Joana, quatro serão escolhidos para ganhar um livro. Qual a probabilidade de Joana ser sorteada?
+/* Questão 09 - Lista Básica (Resolvidos)
+ * Numa turma de curso de inglês com dez alunos, dentre eles Joana, quatro serão escolhidos para ganhar um livro. Qual a probabilidade de Joana ser sorteada? */
 void Q9() {
     srand(time(NULL));
 
@@ -66,13 +66,13 @@ void Q9() {
     std::cout << "A probabilidade de Joana ser sorteada é: " << probabilidade << std::endl << std::endl;
 }
 
-/// Questão 09 - Lista Básica (Propostos)
-/// \Enunciado Considere um conjunto de 4 números dos quais nenhum deles é zero, dois são positivos e
-/// dois são negativos. Sorteamos ao acaso, com reposição, 2 números desse conjunto. <br>
-/// Determine a probabilidade de: <br>
-/// a.) Um deles ser negativo <br>
-/// b.) O quociente entre eles ser negativo. <br>
-/// c.) Os dois números terem o mesmo sinal
+/* Questão 09 - Lista Básica (Propostos)
+ * Considere um conjunto de 4 números dos quais nenhum deles é zero, dois são positivos e
+ * dois são negativos. Sorteamos ao acaso, com reposição, 2 números desse conjunto. 
+ * Determine a probabilidade de: 
+ * a.) Um deles ser negativo 
+ * b.) O quociente entre eles ser negativo.
+ * c.) Os dois números terem o mesmo sinal */
 void Q9p() {
     srand(time(NULL));
 
@@ -108,13 +108,13 @@ void Q9p() {
     std::cout << "Probabilidade de terem o mesmo sinal: " << prob_mesmo_sinal << std::endl << std::endl;
 }
 
-/// Questão 13 - Lista de Condicional (Apresentação)
-/// \Enunciado Um jogo de computador requer que um jogador encontre um refúgio seguro num local onde os seus inimigos
-/// não conseguem entrar. Quatro portas aparecem à sua frente, sendo que ele deve escolher uma para entrar.
-/// A seguir, o jogador deve fazer uma segunda escolha entre dois, quatro, um ou cinco buracos para descer,
-/// dependendo, respectivamente, da porta que ela atravessa. Em cada caso, um buraco leva ao porto seguro.
-/// O jogador é pressionado em tomar uma decisão e em sua pressa faz escolhas aleatórias.
-/// <br> Qual é a probabilidade de ela chegar em segurança ao refúgio?
+/* Questão 13 - Lista de Condicional (Apresentação)
+ * Um jogo de computador requer que um jogador encontre um refúgio seguro num local onde os seus inimigos
+ * não conseguem entrar. Quatro portas aparecem à sua frente, sendo que ele deve escolher uma para entrar.
+ * A seguir, o jogador deve fazer uma segunda escolha entre dois, quatro, um ou cinco buracos para descer,
+ * dependendo, respectivamente, da porta que ela atravessa. Em cada caso, um buraco leva ao porto seguro.
+ * O jogador é pressionado em tomar uma decisão e em sua pressa faz escolhas aleatórias.
+ * Qual é a probabilidade de ela chegar em segurança ao refúgio? */
 void Q13() {
     srand(time(NULL));
     
@@ -159,14 +159,14 @@ void Q13() {
     std::cout << "Probabilidade de sucesso total: " << prob_sucesso << std::endl << std::endl;;
 }
 
-/// Questão 12 - Lista de Condicional (Apresentação) <br> <br>
-/// \Enunciado Antes de serem carregados em um caminhão de distribuição, os pacotes estão sujeitos a testes independentes,
-/// para garantir que o motorista do caminhão possa segurá-los com segurança.
-/// O peso do pacote não deve exceder 30 kg e a soma das três dimensões deve ser inferior a 1m.
-/// Tem sido observado que 5% dos pacotes excedem o limite de peso e 2% excedem o limite de dimensão.
-/// Qual é a probabilidade de que um pacote que atenda ao requisito de peso falhe no requisito de dimensão? <br> <br>
-/// * t1 = exceder o limite de peso <br>
-/// * t2 = exceder o limite de dimensão
+/* Questão 12 - Lista de Condicional (Apresentação) 
+ * Antes de serem carregados em um caminhão de distribuição, os pacotes estão sujeitos a testes independentes,
+ * para garantir que o motorista do caminhão possa segurá-los com segurança.
+ * O peso do pacote não deve exceder 30 kg e a soma das três dimensões deve ser inferior a 1m.
+ * Tem sido observado que 5% dos pacotes excedem o limite de peso e 2% excedem o limite de dimensão.
+ * Qual é a probabilidade de que um pacote que atenda ao requisito de peso falhe no requisito de dimensão?
+ * t1 = exceder o limite de peso 
+ * t2 = exceder o limite de dimensão */
 void Q12() {
     srand(time(NULL));
 
