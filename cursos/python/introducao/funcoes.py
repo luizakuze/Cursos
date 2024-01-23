@@ -93,4 +93,3 @@ print(math.factorial(4))
 
 print(math.floor(2.7)) # arredonda p baixo
 print(math.ceil(2.7)) # arredonda p cima
-
