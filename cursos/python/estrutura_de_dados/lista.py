@@ -122,6 +122,3 @@ frutas_usuario = input('digite o nome das frutas separados por vígula: ')
 frutas_lista = frutas_usuario.split(',') # cria lista considerando a ',' como separador
 
 print(frutas_lista)
-
-
-
