@@ -47,7 +47,28 @@ X.describe()
 
 The steps to building and using a model are:
 
-Define: What type of model will it be? A decision tree? Some other type of model? Some other parameters of the model type are specified too.
-Fit: Capture patterns from provided data. This is the heart of modeling.
-Predict: Just what it sounds like
-Evaluate: Determine how accurate the model's predictions are.
+- Define: What type of model will it be? A decision tree? Some other type of model? Some other parameters of the model type are specified too.
+- Fit: Capture patterns from provided data. This is the heart of modeling.
+- Predict: Just what it sounds like.
+- Evaluate: Determine how accurate the model's predictions are.
+
+#### example
+```python
+from sklearn.tree import DecisionTreeRegressor
+
+# Define model. Specify a number for random_state to ensure same results each run
+melbourne_model = DecisionTreeRegressor(random_state=1)
+
+# Fit model
+melbourne_model.fit(X, y)
+```
+
+- Specifying a number for random_state ensures you get the same results in each run. This is considered a good practice. 
+
+```python
+# predict
+print("Making predictions for the following 5 houses:")
+print(X.head())
+print("The predictions are")
+print(melbourne_model.predict(X.head()))
+```
