@@ -5,8 +5,8 @@
 - error = actual − predicted
 
 ## Mean Absolute Error (MAE)
-- We take the absolute value of each error. 
-- We then take the average of those absolute errors.
+- 1st We take the absolute value of each error. 
+- 2nd We then take the average of those absolute errors.
 - This is our measure of model quality.
 
 ```python
@@ -17,7 +17,7 @@ mean_absolute_error(y, predicted_home_prices)
 ```
 ## Coding - Validation Data
 
-####  breaking up the data into different pieces: train test split and MAE split
+Breaking up the data into different pieces: train test split and MAE split:
 
 - `train_test_split` = training data to fit the model.
 - `mean_absolute_error` = validation data to calculate MAE.
@@ -38,3 +38,19 @@ melbourne_model.fit(train_X, train_y)
 val_predictions = melbourne_model.predict(val_X)
 print(mean_absolute_error(val_y, val_predictions))
 ```
+
+### Comparing top few validation predictions and top few actual prices
+
+
+```python
+# validation predictions
+print('validation predictions: ', val_predictions[:5])
+# actual 
+print('actual: ', val_y.head().tolist())
+```
+
+_Note: val_predictions[:5] print the index 0 to the index 4 of a list called 'val_predictions'_
+
+### Why validation predictions differ from in-sample (or training) predictions? 
+
+- Models may learn patterns from the training data that do not necessarily generalize well to unseen data. 
