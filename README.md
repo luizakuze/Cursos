@@ -1,7 +1,7 @@
-## EEP - Estatística e Probabilidade 📌💻
+## Cursos 📚
 Esse é o meu repositório de cursos relacionados à estatística, probabilidade, visualização de dados e machine learning!
  
-### Diretórios 📚
+### Diretórios 📌
 - **estudo-inicial:** Primeiro contato com python e visualização de dados com vídeos do youtube.
 - **estatistica-com-python:** Conceitos de estatística (ex: distribuições e teste de hipóteses) aplicados em python, curso da plataforma Udemy.
 - **python:** Conceitos introdutórios ao python e que se encerra na parte de POO, curso da plataforma Udemy.
