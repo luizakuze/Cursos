@@ -16,7 +16,7 @@ predicted_home_prices = melbourne_model.predict(X)
 mean_absolute_error(y, predicted_home_prices)
 ```
 ## Coding - Validation Data
-
+s
 Breaking up the data into different pieces: train test split and MAE split:
 
 - `train_test_split` = training data to fit the model.
