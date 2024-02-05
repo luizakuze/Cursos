@@ -3,7 +3,26 @@
 - Ends the problem of underfitting and overfitting.
 - **Concept**: Uses many trees, and it makes a prediction by averaging the predictions of each component tree.
 
+## Pros and cons
+
+### Pros
+
+- Accurate and robust due to the number of trees
+
+- Solve the problem of overfitting and underfitting
+
+- Can work with missing values. Uses median values ​​to replace continuous variables and computes the weighted mean of proximity
+
+- We can get the importance of features
+
+### Cons
+
+- Slow to generate predictions due to large number of trees
+
+- Difficult to interpret the model
+
 ## What we have already seen with Decision Tree:
+
 ```python
 import pandas as pd
     

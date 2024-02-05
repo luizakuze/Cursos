@@ -21,6 +21,9 @@ melbourne_data.columns
 melbourne_data = melbourne_data.dropna(axis=0)
 ```
 
+- Axis = 0 -> Rows
+- Axis = 1 -> Columns
+
 ## selecting the prediction target
 - its possible pull a variable with `dot-notation` (is a convention of programming languages, especially in object-oriented languages, that allows you to access members (methods and attributes) of an object using a period '.').
 
