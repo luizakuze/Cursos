@@ -17,7 +17,7 @@ The easiest approach to dealing with categorical variables is to simply remove t
 
 Ordinal encoding assigns each unique value to a different integer.
 
-![ordinal-encoding-example](intermediate-machine-learning\images\ordinal-encoding.png)
+![ordinal-encoding-example](Cursos\intermediate-machine-learning\images\ordinal-encoding.png)
 
 This approach assumes an ordering of the categories: "Never" (0) < "Rarely" (1) < "Most days" (2) < "Every day" (3).
 
@@ -27,7 +27,7 @@ Not all categorical variables have a clear ordering in the values, but we refer 
 
 One-hot encoding creates new columns indicating the presence (or absence) of each possible value in the original data. To understand this, we'll work through an example.
 
-![one-hot--encoding-example](intermediate-machine-learning\images\one-hot-encoding.png)
+![one-hot--encoding-example](Cursos\intermediate-machine-learning\images\one-hot-encoding.png)
 
 In contrast to ordinal encoding, one-hot encoding does not assume an ordering of the categories. Thus, you can expect this approach to work particularly well if there is no clear ordering in the categorical data (e.g., "Red" is neither more nor less than "Yellow").
 
