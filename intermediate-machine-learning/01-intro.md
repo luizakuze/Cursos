@@ -2,6 +2,11 @@
 
 ## Splitting the database for validation and prediction
 
+- train_X: These are the characteristics used to train the model.
+- val_X: These are the characteristics used to validate the model.
+- train_y: These are the targets corresponding to the training data.
+- val_y: These are the targets corresponding to the validation data.
+
 ```python
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -20,10 +25,26 @@ X_test = X_test_full[features].copy()
 X_train, X_valid, y_train, y_valid = train_test_split(X, y, train_size=0.8, test_size=0.2, random_state=0)
 ```
 
-- train_X: These are the characteristics used to train the model.
-- val_X: These are the characteristics used to validate the model.
-- train_y: These are the targets corresponding to the training data.
-- val_y: These are the targets corresponding to the validation data.
+In the documentation `train_test_split` it says "Slipt arrays or matrices into random train and test subsets". 
+
+And the paramethers:
+
+```python
+sklearn.model_selection.train_test_split(*arrays, test_size=None, train_size=None, random_state=None, shuffle=True, stratify=None)
+```
+
+- ***arrays**: Lists, numpy arrays, scipy-sparse matrices or pandas dataframes. inputs.
+
+- **stratify**: If not None, data is split in a stratified fashion, using this as the class labels.
+
+- **test_size**: If float, should be between 0.0 and 1.0 and represent the proportion of the dataset to include in the test split.
+
+- **train_size**: If float, should be between 0.0 and 1.0 and represent the proportion of the dataset to include in the train split.
+
+- **random_state**: Controls the shuffling applied to the data before applying the split.
+
+- **shuffle**: Whether or not to shuffle the data before splitting. If shuffle = False then stratify must be None.
+
 
 ```python
 X_train.head()
@@ -43,7 +64,14 @@ model_5 = RandomForestRegressor(n_estimators=100, max_depth=7, random_state=0)
 models = [model_1, model_2, model_3, model_4, model_5]
 ```
 
-To select the best model out five, we define a function socore_model() below
+**Notes**
+
+- `n_estimators`: The number of trees in the forest.
+- `min_samples_split`: The minimum number of samples required to split an internal node.
+- `max_depth`: The maximum depth of the tree. If None, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples.
+- `criterion`: The function to measure the quality of a split. It can be “squared_error”, “absolute_error”, “friedman_mse” or “poisson” and default=”squared_error”.
+
+To select the best model out five (model_1, model_2, ..., model_5), we define a function score_model() below
 
 ## score_model(): Retuns the mean absolute error (MAE) form the validation set
 

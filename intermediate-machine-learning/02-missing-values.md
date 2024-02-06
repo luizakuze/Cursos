@@ -206,7 +206,7 @@ for col in X_train.columns:
     # Check if the column has any missing values
     if X_train[col].isnull().any():
         # If it does, append the column name to cols_with_missing list
-        cols_with_missing.append(col) # Your code here
+        cols_with_missing.append(col) 
 
 # Fill in the lines below: drop columns in training and validation data
 reduced_X_train = X_train.drop(cols_with_missing, axis=1)
