@@ -2,6 +2,8 @@
 
 _A random forest is a meta estimator that fits a number of decision tree regressors on various sub-samples of the dataset and uses averaging to improve the predictive accuracy and control over-fitting._
 
+We refer to the random forest method as an ``"ensemble method"``. By definition, ensemble methods combine the predictions of several models (e.g., several trees, in the case of random forests). 
+
 - Ends the problem of underfitting and overfitting.
 - Uses many trees, and it makes a prediction by averaging the predictions of each component tree.
 
