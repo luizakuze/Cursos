@@ -8,3 +8,4 @@ Esse é o meu repositório de cursos relacionados à estatística, probabilidade
 - **series-temporais:** Conceitos sobre análise de dados, distribuições e tratamento de dados, curso da plataforma Udemy.
 - **intro-machine-learning:** Estudo do curso sobre machine learning da plataforma Kaggle (em inglês), meu primeiro contato com dados em machine learning. Em seu conteúdo há alguns temas como: "Decision Tree" e "Random Forest".
 - **intermediate-machine-learning:** Curso da plataforma Kaggle e em inglês. Contém alguns conteúdos como: "cross-validation" e "XGBoost".
+- **exercicios-machine-learning:** Diretório apenas para testar modelos e aprendizagens de machine learning!

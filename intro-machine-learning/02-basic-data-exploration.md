@@ -2,7 +2,7 @@
 
 - The first step in any machine learning project is familiarize yourself with the data.
 
-- Data scientists use 'Pandas' library for exploring data.
+- Data scientists use ``Pandas`` library for exploring data.
 
 ```python
 import pandas as pd
