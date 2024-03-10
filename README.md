@@ -9,3 +9,4 @@ Esse é o meu repositório de cursos relacionados à estatística, probabilidade
 - **intro-machine-learning:** Estudo do curso sobre machine learning da plataforma Kaggle (em inglês), meu primeiro contato com dados em machine learning. Em seu conteúdo há alguns temas como: "Decision Tree" e "Random Forest".
 - **intermediate-machine-learning:** Curso da plataforma Kaggle e em inglês. Contém alguns conteúdos como: "cross-validation" e "XGBoost".
 - **exercicios-machine-learning:** Diretório apenas para testar modelos e aprendizagens de machine learning!
+- **cálculo-numérico:** Curso de matlab com conceitos de cálculo numérico, como solução de sistemas lineares e diferenciação/integração numérica.
