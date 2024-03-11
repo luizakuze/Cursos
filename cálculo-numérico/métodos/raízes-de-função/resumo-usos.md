@@ -10,7 +10,7 @@
 - Transforma a equação em uma forma x = g(x), onde g(x) é uma função contínua.
 - Converge se a função g(x) atender às condições do Teorema do Ponto Fixo.
 
-## - Método de Newton-Raphson:
+## Método de Newton-Raphson:
 - Raízes de funções diferenciáveis.
 - Exige a derivada da função.
 - Pode convergir rapidamente, mas falhar se a derivada for próxima ou igual a zero na raiz.
