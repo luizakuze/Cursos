@@ -10,3 +10,4 @@ Esse é o meu repositório de cursos relacionados à estatística, probabilidade
 - **intermediate-machine-learning:** Curso da plataforma Kaggle e em inglês. Contém alguns conteúdos como: "cross-validation" e "XGBoost".
 - **exercicios-machine-learning:** Diretório apenas para testar modelos e aprendizagens de machine learning!
 - **cálculo-numérico:** Curso de matlab com conceitos de cálculo numérico, como solução de sistemas lineares e diferenciação/integração numérica.
+- **machine-learning-A-Z:** Curso de machine de machine learning da plataforma Udemy. Contém conteúdos em Python e em R.
