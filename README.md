@@ -1,4 +1,4 @@
-## Cursos 📚
+## Data Science Study 📚
 Esse é o meu repositório de cursos relacionados à estatística, probabilidade, visualização de dados e machine learning!
  
 ### Diretórios 📌
